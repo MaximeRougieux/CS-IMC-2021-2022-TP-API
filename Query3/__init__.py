@@ -35,7 +35,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             cursor.execute("SELECT genre, AVG(averageRating) FROM [dbo].[tGenres] LEFT JOIN [dbo].[tTitles] ON [dbo].[tGenres].tconst = [dbo].[tTitles].tconst WHERE averageRating >= 0 GROUP BY genre")
             rows = cursor.fetchall()
             for row in rows:
-                dataString += f"SQL: genre={row[0]}\n"
+                dataString += f"SQL: genre={row[0]}, average rating={row[1]}\n"
     except:
         errorMessage = "Erreur de connexion a la base SQL"
 
